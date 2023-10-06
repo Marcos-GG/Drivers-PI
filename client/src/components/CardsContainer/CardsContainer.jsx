@@ -13,9 +13,10 @@ const CardsContainer = () => {
           <Card
             key={driver.id}
             id={driver.id}
+            image={driver.image}
             name={driver.name}
             lastName={driver.lastName}
-            image={driver.image}
+            teams={driver.teams}
           />
         );
       })}

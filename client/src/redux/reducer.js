@@ -1,4 +1,4 @@
-import { USER_ALL } from "./actions";
+import { ALL_DRIVER, GET_BY_NAME } from "./actions";
 
 const initialState = {
   users: [],
@@ -6,7 +6,10 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case USER_ALL: {
+    case ALL_DRIVER: {
+      return { ...state, users: action.payload };
+    }
+    case GET_BY_NAME: {
       return { ...state, users: action.payload };
     }
 
