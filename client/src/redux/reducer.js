@@ -1,7 +1,15 @@
-import { ALL_DRIVER, GET_BY_NAME } from "./actions";
+import {
+  ALL_DRIVER,
+  GET_BY_NAME,
+  ORDER_AZ,
+  ORDER_ZA,
+  FILTER_API,
+  FILTER_DB,
+} from "./actions";
 
 const initialState = {
   users: [],
+  usersCopy: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,6 +19,30 @@ const reducer = (state = initialState, action) => {
     }
     case GET_BY_NAME: {
       return { ...state, users: action.payload };
+    }
+    case ORDER_AZ: {
+      const nombresOrdenados = [...state.users];
+      nombresOrdenados.sort((a, b) => a.name.localeCompare(b.name));
+
+      return { ...state, users: nombresOrdenados };
+    }
+    case ORDER_ZA: {
+      const nombresOrdenados = [...state.users];
+      nombresOrdenados.sort((a, b) => b.name.localeCompare(a.name));
+
+      return { ...state, users: nombresOrdenados };
+    }
+    case FILTER_API: {
+      const allDrivers = [...state.users];
+      const filterApi = allDrivers.filter((driver) => driver.created === false);
+
+      return { ...state, users: filterApi };
+    }
+    case FILTER_DB: {
+      const allDrivers = [...state.users];
+      const filterDb = allDrivers.filter((driver) => driver.created === true);
+
+      return { ...state, users: filterDb };
     }
 
     default:

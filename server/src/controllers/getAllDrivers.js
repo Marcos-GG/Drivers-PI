@@ -25,9 +25,9 @@ const getAllDrivers = async (name) => {
       driver.name.toLowerCase().startsWith(name.toLowerCase())
     );
 
-    allDrivers = [...apiFilter, ...driversDb].slice(0, 15);
+    allDrivers = [...driversDb, ...apiFilter].slice(0, 15);
   } else {
-    allDrivers = [...apiDrivers, ...driversDb];
+    allDrivers = [...driversDb, ...apiDrivers];
   }
 
   return allDrivers;
