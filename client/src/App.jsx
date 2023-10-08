@@ -12,7 +12,7 @@ const App = () => {
       {location.pathname !== "/" && <NavBar />}
       <Routes>
         <Route exact path="/" element={<Landing />} />
-        <Route exact path="/detail" element={<Detail />} />S
+        <Route exact path="/detail/:id" element={<Detail />} />
         <Route path="/home" element={<Home />} />
         <Route exact path="/create" element={<Form />} />
       </Routes>

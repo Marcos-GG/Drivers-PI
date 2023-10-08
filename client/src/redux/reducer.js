@@ -5,11 +5,13 @@ import {
   ORDER_ZA,
   FILTER_API,
   FILTER_DB,
+  GET_BY_ID,
 } from "./actions";
 
 const initialState = {
   users: [],
   usersCopy: [],
+  userId: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -43,6 +45,10 @@ const reducer = (state = initialState, action) => {
       const filterDb = allDrivers.filter((driver) => driver.created === true);
 
       return { ...state, users: filterDb };
+    }
+    case GET_BY_ID: {
+      console.log("reducer", action.payload);
+      return { ...state, userId: action.payload };
     }
 
     default:

@@ -54,9 +54,7 @@ const NavBar = () => {
         <Link to="/create">FORM</Link>
         <input placeholder="Busqueda" value={string} onChange={handleChange} />
         <button onClick={handleSubmit}>Buscar</button>
-        <Link to="/detail">
-          <button>detail personaje</button>
-        </Link>
+
         <form></form>
       </div>
 

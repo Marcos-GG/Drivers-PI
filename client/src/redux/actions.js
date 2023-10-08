@@ -6,12 +6,14 @@ export const ORDER_AZ = "ORDER_AZ";
 export const ORDER_ZA = "ORDER_ZA";
 export const FILTER_API = "FILTER_API";
 export const FILTER_DB = "FILTER_DB";
+export const GET_BY_ID = "GET_BY_ID";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
     const apiData = await axios.get("http://localhost:3001/drivers");
     const drivers = apiData.data;
     let newArray = drivers.map((driver) => ({
+      id: driver.id,
       image: driver.image,
       name: driver.name,
       lastName: driver.lastName,
@@ -36,6 +38,15 @@ export const getByName = (name) => {
       teams: driver.teams,
     }));
     dispatch({ type: GET_BY_NAME, payload: newArray });
+  };
+};
+
+export const getById = (id) => {
+  return async function (dispatch) {
+    const idData = (await axios.get(`http://localhost:3001/drivers/${id}`))
+      .data;
+    console.log("action", idData);
+    dispatch({ type: GET_BY_ID, payload: idData });
   };
 };
 
