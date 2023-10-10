@@ -7,6 +7,8 @@ export const ORDER_ZA = "ORDER_ZA";
 export const FILTER_API = "FILTER_API";
 export const FILTER_DB = "FILTER_DB";
 export const GET_BY_ID = "GET_BY_ID";
+export const POST_DRIVER = "POST_DRIVER";
+export const ALL_TEAMS = "ALL_TEAMS";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
@@ -45,8 +47,23 @@ export const getById = (id) => {
   return async function (dispatch) {
     const idData = (await axios.get(`http://localhost:3001/drivers/${id}`))
       .data;
-    console.log("action", idData);
     dispatch({ type: GET_BY_ID, payload: idData });
+  };
+};
+
+export const postDriver = (form) => {
+  return async function (dispatch) {
+    const Driver = await axios.post("http://localhost:3001/drivers", form);
+
+    dispatch({ type: POST_DRIVER, payload: Driver.data });
+  };
+};
+
+export const getTeams = () => {
+  return async function (dispatch) {
+    const teams = await axios.get("http://localhost:3001/teams");
+    console.log(teams.data);
+    dispatch({ type: ALL_TEAMS, payload: teams.data });
   };
 };
 

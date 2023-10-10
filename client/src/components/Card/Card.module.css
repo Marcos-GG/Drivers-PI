@@ -1,6 +1,14 @@
 .card {
-  margin: 30px;
   text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  width: 400px; /* Ajusta el ancho de cada tarjeta (33.33% para mostrar 3 por fila) */
+  margin-bottom: 20px; /* Espacio entre las tarjetas */
+  background-color: #f0f0f0; /* Color de fondo de las tarjetas (puedes cambiarlo según tu diseño) */
+  border: 1px solid #ccc; /* Borde de las tarjetas (opcional) */
+  padding: 20px; /* Espacio interno dentro de cada tarjeta */
+  box-sizing: border-box; /* Garantiza que el padding no afecte el ancho total de la tarjeta */
+  margin: 40px;
 }
 
 .img {

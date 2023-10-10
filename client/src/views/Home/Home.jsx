@@ -13,7 +13,10 @@ const Home = () => {
     dispatch(getAllUsers());
   }, [dispatch]);
 
-  const Drivers = useSelector((state) => state.users);
+  const AllDrivers = useSelector((state) => state.users);
+  const FiltersDriver = useSelector((state) => state.usersCopy);
+
+  const Drivers = FiltersDriver.length > 0 ? FiltersDriver : AllDrivers;
 
   const [nDrivers, setNDrivers] = useState(9); // hasta donde quiero mostrar
   const [pagina, setPagina] = useState(1);

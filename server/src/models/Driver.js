@@ -16,11 +16,11 @@ module.exports = (sequelize) => {
         primaryKey: true,
       },
       name: {
-        type: DataTypes.STRING(15),
+        type: DataTypes.STRING(),
         allowNull: false,
       },
       lastName: {
-        type: DataTypes.STRING(15),
+        type: DataTypes.STRING(),
         allowNull: false,
       },
       description: {
