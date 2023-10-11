@@ -7,6 +7,7 @@ import {
   filterApi,
   filterDb,
   filterTeams,
+  resetFilters,
 } from "../../redux/actions";
 import { useState } from "react";
 import style from "./NavBar.module.css";
@@ -14,6 +15,16 @@ import style from "./NavBar.module.css";
 const NavBar = () => {
   const dispatch = useDispatch();
   const [string, setString] = useState("");
+
+  // eslint-disable-next-line no-unused-vars
+  const [filters, setFilters] = useState("");
+  // eslint-disable-next-line no-unused-vars
+  const [orders, setOrders] = useState(null);
+
+  const handlerReset = () => {
+    dispatch(resetFilters(setFilters(""), setOrders(null)));
+  };
+
   const Teams = useSelector((state) => state.teams);
 
   const handleChange = (event) => {
@@ -23,16 +34,19 @@ const NavBar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     dispatch(getByName(string));
+    setFilters("");
   };
 
   const handlerOrderAz = (event) => {
     event.preventDefault();
     dispatch(orderNameAZ());
+    setOrders("az");
   };
 
   const handlerOrderZa = (event) => {
     event.preventDefault();
     dispatch(orderNameZA());
+    setOrders("za");
   };
 
   // falta por nacimiento
@@ -42,16 +56,19 @@ const NavBar = () => {
   const handlerApi = (event) => {
     event.preventDefault();
     dispatch(filterApi());
+    setFilters("api");
   };
 
   const handlerDb = (event) => {
     event.preventDefault();
     dispatch(filterDb());
+    setFilters("db");
   };
 
   const handlerTeams = (event) => {
     const teamSeleccionado = event.target.value;
     dispatch(filterTeams(teamSeleccionado));
+    setFilters("teams");
   };
 
   return (
@@ -59,6 +76,8 @@ const NavBar = () => {
       <div>
         <Link to="/home">HOME</Link>
         <Link to="/create">FORM</Link>
+        <button onClick={handlerReset}>Reiniciar Filtros</button>
+
         <input placeholder="Busqueda" value={string} onChange={handleChange} />
         <button onClick={handleSubmit}>Buscar</button>
 

@@ -10,6 +10,7 @@ export const GET_BY_ID = "GET_BY_ID";
 export const POST_DRIVER = "POST_DRIVER";
 export const ALL_TEAMS = "ALL_TEAMS";
 export const FILTER_TEAMS = "FILTRAR_TEAMS";
+export const RESET_FILTERS = "RESET_FILTERS";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
@@ -71,6 +72,10 @@ export const getTeams = () => {
 export const filterTeams = (teamSeleccionado) => {
   console.log(teamSeleccionado);
   return { type: FILTER_TEAMS, payload: teamSeleccionado };
+};
+
+export const resetFilters = () => {
+  return { type: RESET_FILTERS };
 };
 
 export const orderNameAZ = () => {
