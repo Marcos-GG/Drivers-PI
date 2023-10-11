@@ -9,6 +9,7 @@ export const FILTER_DB = "FILTER_DB";
 export const GET_BY_ID = "GET_BY_ID";
 export const POST_DRIVER = "POST_DRIVER";
 export const ALL_TEAMS = "ALL_TEAMS";
+export const FILTER_TEAMS = "FILTRAR_TEAMS";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
@@ -65,6 +66,11 @@ export const getTeams = () => {
     console.log(teams.data);
     dispatch({ type: ALL_TEAMS, payload: teams.data });
   };
+};
+
+export const filterTeams = (teamSeleccionado) => {
+  console.log(teamSeleccionado);
+  return { type: FILTER_TEAMS, payload: teamSeleccionado };
 };
 
 export const orderNameAZ = () => {

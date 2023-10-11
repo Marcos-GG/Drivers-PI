@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import validation from "./validation";
 import { useDispatch, useSelector } from "react-redux";
-import { postDriver, getTeams } from "../../redux/actions";
+import { postDriver } from "../../redux/actions";
 
 const Form = () => {
   const dispatch = useDispatch();
   const Teams = useSelector((state) => state.teams);
-
-  useEffect(() => {
-    dispatch(getTeams());
-  }, [dispatch]);
 
   const [form, setForm] = useState({
     name: "",

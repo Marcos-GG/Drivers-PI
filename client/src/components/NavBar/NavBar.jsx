@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   getByName,
   orderNameAZ,
   orderNameZA,
   filterApi,
   filterDb,
+  filterTeams,
 } from "../../redux/actions";
 import { useState } from "react";
 import style from "./NavBar.module.css";
@@ -13,6 +14,7 @@ import style from "./NavBar.module.css";
 const NavBar = () => {
   const dispatch = useDispatch();
   const [string, setString] = useState("");
+  const Teams = useSelector((state) => state.teams);
 
   const handleChange = (event) => {
     setString(event.target.value);
@@ -45,6 +47,11 @@ const NavBar = () => {
   const handlerDb = (event) => {
     event.preventDefault();
     dispatch(filterDb());
+  };
+
+  const handlerTeams = (event) => {
+    const teamSeleccionado = event.target.value;
+    dispatch(filterTeams(teamSeleccionado));
   };
 
   return (
@@ -88,7 +95,6 @@ const NavBar = () => {
         </div>
       </div>*/}
 
-      {/* Problemas para pasar de un filtrado a otro  */}
       <div className={style.dropdown}>
         <button className={style.dropbtn}>Origen</button>
         <div className={style.dropdownContent}>
@@ -102,6 +108,16 @@ const NavBar = () => {
           </ul>
         </div>
       </div>
+
+      <label htmlFor="">Teams</label>
+      <select onChange={handlerTeams}>
+        <option value="select">Seleciona un team</option>
+        {Teams.map((team, index) => (
+          <option key={index} value={team.id}>
+            {team}
+          </option>
+        ))}
+      </select>
     </div>
   );
 };

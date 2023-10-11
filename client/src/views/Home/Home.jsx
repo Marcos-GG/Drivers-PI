@@ -2,12 +2,16 @@
 import CardsContainer from "../../components/CardsContainer/CardsContainer";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { getAllUsers } from "../../redux/actions";
+import { getAllUsers, getTeams } from "../../redux/actions";
 import Paginado from "../../components/Paginado/Paginado";
 
 const Home = () => {
   const dispatch = useDispatch();
   // home es quien muestra CardContianer , por eso necesitamos hacer el dispatch que getAllUsers cuando mostamos el componente home
+
+  useEffect(() => {
+    dispatch(getTeams());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getAllUsers());
