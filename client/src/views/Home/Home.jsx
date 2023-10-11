@@ -11,11 +11,13 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getTeams());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     dispatch(getAllUsers());
-  }, [dispatch]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const AllDrivers = useSelector((state) => state.users);
   const FiltersDriver = useSelector((state) => state.usersCopy);

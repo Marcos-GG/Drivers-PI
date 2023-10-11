@@ -73,7 +73,11 @@ const reducer = (state = initialState, action) => {
     }
 
     case GET_BY_ID: {
-      return { ...state, userId: action.payload };
+      console.log(action.payload, "esto llega al reducer");
+      const driverId = state.users.find(
+        (driver) => driver.id === action.payload
+      );
+      return { ...state, userId: driverId };
     }
 
     case POST_DRIVER: {

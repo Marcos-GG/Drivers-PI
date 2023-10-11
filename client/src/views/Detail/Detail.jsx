@@ -7,6 +7,7 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const driver = useSelector((state) => state.userId);
+  console.log(driver, "holaaaaaaaaaa");
 
   useEffect(() => {
     dispatch(getById(id));
