@@ -1,0 +1,13 @@
+html,
+body {
+  margin: 0;
+  background-color: #333333;
+}
+
+.home {
+  background-color: #333333;
+  height: 100%;
+  border: none;
+  margin: 0;
+  padding: auto;
+}

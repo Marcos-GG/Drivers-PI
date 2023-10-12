@@ -68,7 +68,6 @@ const reducer = (state = initialState, action) => {
           teamsFiltrados.push(driver);
         }
       });
-      console.log(teamsFiltrados);
       return { ...state, usersCopy: teamsFiltrados };
     }
 

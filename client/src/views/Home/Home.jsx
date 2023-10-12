@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { getAllUsers, getTeams } from "../../redux/actions";
 import Paginado from "../../components/Paginado/Paginado";
+import style from "./home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -11,10 +12,6 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getTeams());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
     dispatch(getAllUsers());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -39,15 +36,14 @@ const Home = () => {
   const paginasTotales = Math.ceil(Drivers.length / nDrivers); // array de drivers / 9
 
   return (
-    <>
-      <h1>Hola soy home</h1>
+    <div className={style.home}>
       <CardsContainer numeroDeDrivers={numeroDeDrivers} />
       <Paginado
         setPagina={setPagina}
         pagina={pagina}
         paginasTotales={paginasTotales}
       />
-    </>
+    </div>
   );
 };
 

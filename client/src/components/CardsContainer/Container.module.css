@@ -1,7 +1,9 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  max-width: 100rem; /* Ancho máximo del contenedor */
+  justify-content: center;
+  gap: 20px; /* Espacio entre las tarjetas */
+  padding: 20px; /* Espacio interno del contenedor */
   margin: 0 auto; /* Centrar el contenedor en la página */
-  align-content: center;
+  max-width: 1200px; /* Ancho máximo del contenedor */
 }

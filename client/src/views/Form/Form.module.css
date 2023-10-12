@@ -1,0 +1,69 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #111111;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.formContainer form {
+  width: 100%;
+  max-width: 400px; /* Ancho máximo para el formulario */
+}
+
+.formContainer form div {
+  margin-bottom: 15px;
+}
+
+.formContainer form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.formContainer form input,
+.formContainer form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #555555;
+}
+
+.formContainer form button {
+  color: #000000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.formContainer form button:hover {
+  background-color: #b71c1c;
+}
+
+.style.submitButton {
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.style.submitButton.disabled {
+  background-color: #cccccc;
+  color: #888888;
+  cursor: not-allowed;
+}
+
+.style.submitButton.disabled:hover {
+  background-color: #cccccc; /* Cambia el color de fondo cuando está deshabilitado y se pasa el ratón */
+}
+
+.error-message {
+  color: red; /* Cambia el color del texto a rojo */
+  font-size: 12px; /* Tamaño de fuente para el mensaje de error */
+}

@@ -72,17 +72,28 @@ const NavBar = () => {
   };
 
   return (
-    <div>
-      <div>
-        <Link to="/home">HOME</Link>
-        <Link to="/create">FORM</Link>
-        <button onClick={handlerReset}>Reiniciar Filtros</button>
+    <div className={style.navbar}>
+      <Link to="/home" className={style.navLink}>
+        HOME
+      </Link>
+      <Link to="/create" className={style.navLink}>
+        FORM
+      </Link>
+      <button onClick={handlerReset} className={style.navButton}>
+        Reiniciar Filtros
+      </button>
 
-        <input placeholder="Busqueda" value={string} onChange={handleChange} />
-        <button onClick={handleSubmit}>Buscar</button>
+      <input
+        placeholder="Busqueda"
+        value={string}
+        onChange={handleChange}
+        className={style.navInput}
+      />
+      <button onClick={handleSubmit} className={style.navButton}>
+        Buscar
+      </button>
 
-        <form></form>
-      </div>
+      <form></form>
 
       <div className={style.dropdown}>
         <button className={style.dropbtn}>Ordenar por Nombre</button>
@@ -98,20 +109,6 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/*<div className={style.dropdown}>
-        <button className={style.dropbtn}>Ordenar por nacimiento</button>
-        <div className={style.dropdownContent}>
-          <ul>
-            <li>
-              <button onClick={}>Ascendente</button>
-            </li>
-            {/* <li>
-              <button onClick={}>Descendente</button>
-            </li>
-          </ul>
-        </div>
-      </div>*/}
-
       <div className={style.dropdown}>
         <button className={style.dropbtn}>Origen</button>
         <div className={style.dropdownContent}>
@@ -126,9 +123,11 @@ const NavBar = () => {
         </div>
       </div>
 
-      <label htmlFor="">Teams</label>
-      <select onChange={handlerTeams}>
-        <option value="select">Seleciona un team</option>
+      <label htmlFor="" className={style.navLabel}>
+        Teams
+      </label>
+      <select onChange={handlerTeams} className={style.navSelect}>
+        <option value="select">Selecciona un team</option>
         {Teams.map((team, index) => (
           <option key={index} value={team.id}>
             {team}

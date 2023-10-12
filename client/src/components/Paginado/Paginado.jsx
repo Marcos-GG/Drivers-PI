@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import style from "./paginado.module.css";
+
 const Paginado = ({ setPagina, pagina, paginasTotales }) => {
   const handleNext = (event) => {
     event.preventDefault();
@@ -11,14 +13,7 @@ const Paginado = ({ setPagina, pagina, paginasTotales }) => {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        gap: 5,
-        width: "100%",
-        justifyContent: "center",
-      }}
-    >
+    <div className={style.paginado}>
       {pagina != 1 && <button onClick={handlePrev}>Prev</button>}
       {pagina > 3 && (
         <>

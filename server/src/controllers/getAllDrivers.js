@@ -31,7 +31,6 @@ const getAllDrivers = async (name) => {
       ? driver?.Teams?.map((team) => team.name)?.join(", ")
       : [];
 
-    console.log(teams);
     return {
       id: driver.id,
       image: driver.image,

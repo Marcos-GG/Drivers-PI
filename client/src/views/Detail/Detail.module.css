@@ -1,0 +1,48 @@
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #111111;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.detail-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 800px; /* Ajusta el ancho máximo según tu preferencia */
+  margin-top: 20px;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.driver-image {
+  max-width: 100%; /* Ajusta el tamaño máximo de la imagen */
+  max-height: 100%; /* Ajusta la altura máxima de la imagen */
+  border-radius: 10px;
+}
+
+.info-container {
+  flex: 1;
+  padding: 0 20px; /* Ajusta el espacio alrededor del contenido de texto */
+}
+
+.info-container p {
+  margin: 5px 0;
+}
+
+.detail-container h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #d32f2f;
+}

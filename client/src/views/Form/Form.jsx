@@ -1,4 +1,5 @@
 import { useState } from "react";
+import style from "./Form.module.css";
 import validation from "./validation";
 import { useDispatch, useSelector } from "react-redux";
 import { postDriver } from "../../redux/actions";
@@ -6,6 +7,7 @@ import { postDriver } from "../../redux/actions";
 const Form = () => {
   const dispatch = useDispatch();
   const Teams = useSelector((state) => state.teams);
+  const Drivers = useSelector((state) => state.users);
 
   const [form, setForm] = useState({
     name: "",
@@ -66,104 +68,137 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (Object.keys(error).length === 0 && camposLLenos()) {
+      const driverExiste = Drivers.find((driver) => driver.name === form.name);
+
+      driverExiste
+        ? alert("Ya existe driver con ese nombre")
+        : alert("Driver creado!");
+
       dispatch(postDriver(form));
     }
   };
 
-  console.log(form);
-
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Name: </label>
-        <input
-          type="text"
-          value={form.name}
-          onChange={formHandler}
-          name="name"
-        />
-        {error.name && <span>{error.name}</span>}
-      </div>
+    <div className={style.formContainer}>
+      <form onSubmit={handleSubmit}>
+        <div className={style.formField}>
+          <label className={style.label}>Name:</label>
+          <input
+            type="text"
+            value={form.name}
+            onChange={formHandler}
+            name="name"
+            className={style.input}
+          />
+          {error.name && (
+            <span className={style["error-message"]}>{error.name}</span>
+          )}
+        </div>
 
-      <div>
-        <label>Last Name: </label>
-        <input
-          type="text"
-          value={form.lastName}
-          onChange={formHandler}
-          name="lastName"
-        />
-        {error.lastName && <span>{error.lastName}</span>}
-      </div>
+        <div className={style.formField}>
+          <label className={style.label}>Last Name:</label>
+          <input
+            type="text"
+            value={form.lastName}
+            onChange={formHandler}
+            name="lastName"
+            className={style.input}
+          />
+          {error.lastName && (
+            <span className={style["error-message"]}>{error.lastName}</span>
+          )}
+        </div>
 
-      <div>
-        <label>Nationality: </label>
-        <input
-          type="text"
-          onChange={formHandler}
-          value={form.nationality}
-          name="nationality"
-        />
-      </div>
+        <div className={style.formField}>
+          <label className={style.label}>Nationality:</label>
+          <input
+            type="text"
+            onChange={formHandler}
+            value={form.nationality}
+            name="nationality"
+            className={style.input}
+          />
+          {error.nationality && (
+            <span className={style["error-message"]}>{error.nationality}</span>
+          )}
+        </div>
 
-      <div>
-        <label>Image: </label>
-        <input
-          type="text"
-          value={form.image}
-          onChange={formHandler}
-          name="image"
-        />
-      </div>
+        <div className={style.formField}>
+          <label className={style.label}>Image:</label>
+          <input
+            type="text"
+            value={form.image}
+            onChange={formHandler}
+            name="image"
+            className={style.input}
+          />
+          {error.image && (
+            <span className={style["error-message"]}>{error.image}</span>
+          )}
+        </div>
 
-      <div>
-        <label>Birth: </label>
-        <input
-          type="date"
-          value={form.birth}
-          onChange={formHandler}
-          name="birth"
-        />
-      </div>
+        <div className={style.formField}>
+          <label className={style.label}>Birth:</label>
+          <input
+            type="date"
+            value={form.birth}
+            onChange={formHandler}
+            name="birth"
+            className={style.input}
+          />
+          {error.birth && (
+            <span className={style["error-message"]}>{error.birth}</span>
+          )}
+        </div>
 
-      <div>
-        <label>Description: </label>
-        <input
-          type="text"
-          value={form.description}
-          onChange={formHandler}
-          name="description"
-        />
-      </div>
+        <div className={style.formField}>
+          <label className={style.label}>Description:</label>
+          <input
+            type="text"
+            value={form.description}
+            onChange={formHandler}
+            name="description"
+            className={style.input}
+          />
+          {error.description && (
+            <span className={style["error-message"]}>{error.description}</span>
+          )}
+        </div>
 
-      <div>
-        <label>Teams: </label>
-        <select onChange={addTeam} name="teams">
-          {Teams.map((team, index) => (
-            <option key={index} value={team}>
+        <div className={style.formField}>
+          <label className={style.label}>Teams:</label>
+          <select onChange={addTeam} name="teams" className={style.select}>
+            {Teams.map((team, index) => (
+              <option key={index} value={team}>
+                {team}
+              </option>
+            ))}
+          </select>
+          {form.teams.map((team, index) => (
+            <div key={index} className={style.selectedTeam}>
               {team}
-            </option>
+              <button
+                type="button"
+                onClick={() => removeTeam(team)}
+                className={style.removeButton}
+              >
+                x
+              </button>
+            </div>
           ))}
-        </select>
-        {form.teams.map((team, index) => (
-          <div key={index}>
-            {team}
-            <button type="button" onClick={() => removeTeam(team)}>
-              x
-            </button>
-          </div>
-        ))}
-      </div>
+        </div>
 
-      <div>
-        <button
-          type="submit"
-          disabled={!camposLLenos() || Object.keys(error).length > 0}
-        >
-          Submit
-        </button>
-      </div>
-    </form>
+        <div className={style.formField}>
+          <button
+            type="submit"
+            disabled={!camposLLenos() || Object.keys(error).length > 0}
+            className={style.submitButton}
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

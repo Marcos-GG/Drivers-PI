@@ -9,7 +9,6 @@ const CardsContainer = ({ numeroDeDrivers }) => {
       {numeroDeDrivers.map((driver, index) => {
         return (
           // eslint-disable-next-line react/jsx-key
-
           <Card
             id={driver.id}
             key={index}

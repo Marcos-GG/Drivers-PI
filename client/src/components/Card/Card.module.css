@@ -1,17 +1,53 @@
 .card {
-  text-align: center;
-  font-size: 18px;
-  font-weight: bold;
-  width: 400px; /* Ajusta el ancho de cada tarjeta (33.33% para mostrar 3 por fila) */
-  margin-bottom: 20px; /* Espacio entre las tarjetas */
-  background-color: #f0f0f0; /* Color de fondo de las tarjetas (puedes cambiarlo según tu diseño) */
-  border: 1px solid #ccc; /* Borde de las tarjetas (opcional) */
-  padding: 20px; /* Espacio interno dentro de cada tarjeta */
-  box-sizing: border-box; /* Garantiza que el padding no afecte el ancho total de la tarjeta */
-  margin: 40px;
+  background-color: #111111;
+  color: #ffffff;
+  width: 300px;
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.img {
-  max-height: 250px;
-  max-width: 250px;
+.card img {
+  width: 60%;
+  height: 50%;
+  object-fit: cover;
+}
+
+.card .content {
+  padding: px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card p {
+  margin: 10px 0;
+  text-overflow: ellipsis;
+}
+
+.card button {
+  background-color: #d32f2f;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.card button a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.card button:hover {
+  background-color: #b71c1c;
+}
+
+.card button:hover a {
+  color: #ffffff;
 }

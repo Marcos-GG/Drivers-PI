@@ -14,14 +14,10 @@ export const RESET_FILTERS = "RESET_FILTERS";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
-    console.log("get drivers");
-
     try {
       const apiData = await axios.get("http://localhost:3001/drivers");
 
       const drivers = apiData.data;
-
-      console.log(drivers);
 
       let newArray = drivers.map((driver) => ({
         id: driver.id,
@@ -75,7 +71,6 @@ export const getById = (id) => {
 export const postDriver = (form) => {
   return async function (dispatch) {
     const Driver = await axios.post("http://localhost:3001/drivers", form);
-    console.log(Driver, "...............");
     dispatch({ type: POST_DRIVER, payload: Driver.data });
   };
 };
@@ -83,13 +78,11 @@ export const postDriver = (form) => {
 export const getTeams = () => {
   return async function (dispatch) {
     const teams = await axios.get("http://localhost:3001/teams");
-    console.log(teams.data);
     dispatch({ type: ALL_TEAMS, payload: teams.data });
   };
 };
 
 export const filterTeams = (teamSeleccionado) => {
-  console.log(teamSeleccionado);
   return { type: FILTER_TEAMS, payload: teamSeleccionado };
 };
 
