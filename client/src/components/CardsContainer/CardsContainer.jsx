@@ -6,13 +6,13 @@ import Card from "../Card/Card";
 const CardsContainer = ({ numeroDeDrivers }) => {
   return (
     <div className={style.container}>
-      {numeroDeDrivers.map((driver) => {
+      {numeroDeDrivers.map((driver, index) => {
         return (
           // eslint-disable-next-line react/jsx-key
 
           <Card
             id={driver.id}
-            key={driver.id}
+            key={index}
             image={driver.image}
             name={driver.name}
             lastName={driver.lastName}

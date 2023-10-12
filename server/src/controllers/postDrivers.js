@@ -23,11 +23,16 @@ const driverPost = async (
     },
   });
 
-  const [Team] = await Teams.findOrCreate({ where: { name: teams } });
+  for (var i = 0; i < teams.length; i++) {
+    const [Team] = await Teams.findOrCreate({ where: { name: teams[i] } });
 
-  await newDriver.addTeam(Team);
+    await newDriver.addTeam(Team);
+  }
 
-  return newDriver;
+  return {
+    ...newDriver,
+    teams: teams ? teams.join(", ") : "-",
+  };
 };
 
 module.exports = driverPost;

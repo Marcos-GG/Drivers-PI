@@ -18,6 +18,7 @@ const DriverHandler = async (req, res) => {
       return res.status(200).json(driverAll);
     }
   } catch (error) {
+    console.log(error);
     return res.status(300).send(error.message);
   }
 };

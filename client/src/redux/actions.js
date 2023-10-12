@@ -14,34 +14,52 @@ export const RESET_FILTERS = "RESET_FILTERS";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
-    const apiData = await axios.get("http://localhost:3001/drivers");
-    const drivers = apiData.data;
-    let newArray = drivers.map((driver) => ({
-      id: driver.id,
-      image: driver.image,
-      name: driver.name,
-      lastName: driver.lastName,
-      teams: driver.teams,
-      created: driver.created,
-    }));
-    dispatch({ type: ALL_DRIVER, payload: newArray });
+    console.log("get drivers");
+
+    try {
+      const apiData = await axios.get("http://localhost:3001/drivers");
+
+      const drivers = apiData.data;
+
+      console.log(drivers);
+
+      let newArray = drivers.map((driver) => ({
+        id: driver.id,
+        image: driver.image,
+        name: driver.name,
+        lastName: driver.lastName,
+        teams: driver.teams,
+        created: driver.created,
+      }));
+      dispatch({ type: ALL_DRIVER, payload: newArray });
+    } catch (err) {
+      console.log(err);
+    }
   };
 };
 
 // el dispatch va al reducer
 export const getByName = (name) => {
   return async function (dispatch) {
-    const apiData = await axios.get(
-      `http://localhost:3001/drivers?name=${name}`
-    );
-    const drivers = apiData.data;
-    let newArray = drivers.map((driver) => ({
-      image: driver.image,
-      name: driver.name,
-      lastName: driver.lastName,
-      teams: driver.teams,
-    }));
-    dispatch({ type: GET_BY_NAME, payload: newArray });
+    try {
+      const apiData = await axios.get(
+        `http://localhost:3001/drivers?name=${name}`
+      );
+      const drivers = apiData.data;
+
+      if (!drivers.length) throw new Error(drivers.error);
+
+      let newArray = drivers.map((driver) => ({
+        image: driver.image,
+        name: driver.name,
+        lastName: driver.lastName,
+        teams: driver.teams,
+      }));
+      dispatch({ type: GET_BY_NAME, payload: newArray });
+    } catch (error) {
+      const mensajeError = error.message;
+      alert(mensajeError);
+    }
   };
 };
 
@@ -49,6 +67,7 @@ export const getById = (id) => {
   return async function (dispatch) {
     const idData = (await axios.get(`http://localhost:3001/drivers/${id}`))
       .data;
+
     dispatch({ type: GET_BY_ID, payload: idData });
   };
 };
@@ -56,7 +75,7 @@ export const getById = (id) => {
 export const postDriver = (form) => {
   return async function (dispatch) {
     const Driver = await axios.post("http://localhost:3001/drivers", form);
-
+    console.log(Driver, "...............");
     dispatch({ type: POST_DRIVER, payload: Driver.data });
   };
 };

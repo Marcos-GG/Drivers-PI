@@ -22,6 +22,10 @@ const Home = () => {
   const AllDrivers = useSelector((state) => state.users);
   const FiltersDriver = useSelector((state) => state.usersCopy);
 
+  useEffect(() => {
+    setPagina(1);
+  }, [FiltersDriver]);
+
   const Drivers = FiltersDriver.length > 0 ? FiltersDriver : AllDrivers;
 
   const [nDrivers, setNDrivers] = useState(9); // hasta donde quiero mostrar

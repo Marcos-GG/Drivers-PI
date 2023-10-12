@@ -34,14 +34,14 @@ const reducer = (state = initialState, action) => {
     }
 
     case ORDER_AZ: {
-      const nombresOrdenados = [...state.usersCopy];
+      const nombresOrdenados = [...state.users];
       nombresOrdenados.sort((a, b) => a.name.localeCompare(b.name));
 
       return { ...state, usersCopy: nombresOrdenados };
     }
 
     case ORDER_ZA: {
-      const nombresOrdenados = [...state.usersCopy];
+      const nombresOrdenados = [...state.users];
       nombresOrdenados.sort((a, b) => b.name.localeCompare(a.name));
 
       return { ...state, usersCopy: nombresOrdenados };
@@ -74,17 +74,15 @@ const reducer = (state = initialState, action) => {
 
     case GET_BY_ID: {
       console.log(action.payload, "esto llega al reducer");
-      const driverId = state.users.find(
-        (driver) => driver.id === action.payload
-      );
-      return { ...state, userId: driverId };
+
+      return { ...state, userId: action.payload };
     }
 
     case POST_DRIVER: {
+      console.log(action.payload, "esto llega al reducer");
       return {
         ...state,
         users: [action.payload, ...state.users],
-        usersCopy: [action.payload, ...state.users],
       };
     }
 

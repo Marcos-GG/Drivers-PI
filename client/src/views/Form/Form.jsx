@@ -20,9 +20,8 @@ const Form = () => {
   const [error, setError] = useState({});
 
   const formHandler = (event) => {
-    //lo que escribi se guardar en el estado
-    const property = event.target.name; // vinculamos el campo a traves de name
-    let value = event.target.value; // tenemos su valor
+    const property = event.target.name;
+    let value = event.target.value;
 
     if (property === "teams") {
       value = Array.from(
@@ -44,10 +43,34 @@ const Form = () => {
     );
   };
 
+  const camposLLenos = () => {
+    // eslint-disable-next-line no-unused-vars
+    const { image, ...otrosCampos } = form;
+    return Object.values(otrosCampos).every((value) => value !== "");
+  };
+
+  const addTeam = (event) => {
+    setForm({
+      ...form,
+      teams: [...form.teams, event.target.value],
+    });
+  };
+
+  const removeTeam = (teamToRemove) => {
+    setForm({
+      ...form,
+      teams: form.teams.filter((team) => team !== teamToRemove),
+    });
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(postDriver(form));
+    if (Object.keys(error).length === 0 && camposLLenos()) {
+      dispatch(postDriver(form));
+    }
   };
+
+  console.log(form);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -63,7 +86,7 @@ const Form = () => {
       </div>
 
       <div>
-        <label>lastName: </label>
+        <label>Last Name: </label>
         <input
           type="text"
           value={form.lastName}
@@ -96,7 +119,7 @@ const Form = () => {
       <div>
         <label>Birth: </label>
         <input
-          type="text"
+          type="date"
           value={form.birth}
           onChange={formHandler}
           name="birth"
@@ -115,24 +138,33 @@ const Form = () => {
 
       <div>
         <label>Teams: </label>
-        <select value={form.teams} onChange={formHandler} name="teams">
-          {Teams.map((team) => (
-            <option key={team.id} value={team.id}>
+        <select onChange={addTeam} name="teams">
+          {Teams.map((team, index) => (
+            <option key={index} value={team}>
               {team}
             </option>
           ))}
         </select>
+        {form.teams.map((team, index) => (
+          <div key={index}>
+            {team}
+            <button type="button" onClick={() => removeTeam(team)}>
+              x
+            </button>
+          </div>
+        ))}
       </div>
 
       <div>
-        <button type="submit"> Enviar </button>
+        <button
+          type="submit"
+          disabled={!camposLLenos() || Object.keys(error).length > 0}
+        >
+          Submit
+        </button>
       </div>
     </form>
   );
 };
 
 export default Form;
-
-// mi form tiene que ser un reflejo de mi estado
-// value= {form.x} el mismo valor que el estado
-// onChange={} manda un evento

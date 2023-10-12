@@ -84,8 +84,6 @@ const NavBar = () => {
         <form></form>
       </div>
 
-      {/* falta filtrar por teams */}
-
       <div className={style.dropdown}>
         <button className={style.dropbtn}>Ordenar por Nombre</button>
         <div className={style.dropdownContent}>
