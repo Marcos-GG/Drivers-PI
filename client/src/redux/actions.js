@@ -11,6 +11,8 @@ export const POST_DRIVER = "POST_DRIVER";
 export const ALL_TEAMS = "ALL_TEAMS";
 export const FILTER_TEAMS = "FILTRAR_TEAMS";
 export const RESET_FILTERS = "RESET_FILTERS";
+export const ORDER_EDAD_A = "ORDER_EDAD_A";
+export const ORDER_EDAD_D = "ORDER_EDAD_D";
 
 export const getAllUsers = () => {
   return async function (dispatch) {
@@ -25,6 +27,7 @@ export const getAllUsers = () => {
         name: driver.name,
         lastName: driver.lastName,
         teams: driver.teams,
+        birth: driver.birth,
         created: driver.created,
       }));
       dispatch({ type: ALL_DRIVER, payload: newArray });
@@ -115,4 +118,12 @@ export const filterApi = () => {
 
 export const filterDb = () => {
   return { type: FILTER_DB };
+};
+
+export const edadA = () => {
+  return { type: ORDER_EDAD_A };
+};
+
+export const edadD = () => {
+  return { type: ORDER_EDAD_D };
 };

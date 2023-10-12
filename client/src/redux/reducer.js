@@ -10,6 +10,8 @@ import {
   POST_DRIVER,
   FILTER_TEAMS,
   RESET_FILTERS,
+  ORDER_EDAD_A,
+  ORDER_EDAD_D,
 } from "./actions";
 
 const initialState = {
@@ -45,6 +47,28 @@ const reducer = (state = initialState, action) => {
       nombresOrdenados.sort((a, b) => b.name.localeCompare(a.name));
 
       return { ...state, usersCopy: nombresOrdenados };
+    }
+
+    case ORDER_EDAD_A: {
+      const driversOrdenados = [...state.users];
+      driversOrdenados.sort((a, b) => {
+        let dateA = new Date(a.birth);
+        let dateB = new Date(b.birth);
+        return dateA - dateB;
+      });
+
+      return { ...state, usersCopy: driversOrdenados };
+    }
+
+    case ORDER_EDAD_D: {
+      const driversOrdenados = [...state.users];
+      driversOrdenados.sort((a, b) => {
+        let dateA = new Date(a.birth);
+        let dateB = new Date(b.birth);
+        return dateB - dateA;
+      });
+
+      return { ...state, usersCopy: driversOrdenados };
     }
 
     case FILTER_API: {

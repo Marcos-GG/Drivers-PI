@@ -8,6 +8,8 @@ import {
   filterDb,
   filterTeams,
   resetFilters,
+  edadA,
+  edadD,
 } from "../../redux/actions";
 import { useState } from "react";
 import style from "./NavBar.module.css";
@@ -49,10 +51,6 @@ const NavBar = () => {
     setOrders("za");
   };
 
-  // falta por nacimiento
-
-  //
-
   const handlerApi = (event) => {
     event.preventDefault();
     dispatch(filterApi());
@@ -63,6 +61,18 @@ const NavBar = () => {
     event.preventDefault();
     dispatch(filterDb());
     setFilters("db");
+  };
+
+  const handlerOrderEdadA = (event) => {
+    event.preventDefault();
+    dispatch(edadA());
+    setFilters("edadA");
+  };
+
+  const handlerOrderEdadD = (event) => {
+    event.preventDefault();
+    dispatch(edadD());
+    setFilters("edadD");
   };
 
   const handlerTeams = (event) => {
@@ -118,6 +128,20 @@ const NavBar = () => {
             </li>
             <li>
               <button onClick={handlerDb}>Base de datos</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div className={style.dropdown}>
+        <button className={style.dropbtn}>Ordenar por Edad</button>
+        <div className={style.dropdownContent}>
+          <ul>
+            <li>
+              <button onClick={handlerOrderEdadA}>Ascendente</button>
+            </li>
+            <li>
+              <button onClick={handlerOrderEdadD}>Descendente</button>
             </li>
           </ul>
         </div>

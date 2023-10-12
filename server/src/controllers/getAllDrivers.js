@@ -37,6 +37,7 @@ const getAllDrivers = async (name) => {
       name: driver.name,
       lastName: driver.lastName,
       created: driver.created,
+      birth: driver.birth,
       teams,
     };
   });
