@@ -12,7 +12,7 @@
 
 .formContainer form {
   width: 100%;
-  max-width: 400px; /* Ancho máximo para el formulario */
+  max-width: 400px;
 }
 
 .formContainer form div {
@@ -52,7 +52,6 @@
   cursor: pointer;
 }
 
-/* Estilo cuando el botón está deshabilitado */
 .style.submitButton.disabled {
   background-color: #cccccc;
   color: #888888;
@@ -60,10 +59,10 @@
 }
 
 .style.submitButton.disabled:hover {
-  background-color: #cccccc; /* Cambia el color de fondo cuando está deshabilitado y se pasa el ratón */
+  background-color: #cccccc;
 }
 
 .error-message {
-  color: red; /* Cambia el color del texto a rojo */
-  font-size: 12px; /* Tamaño de fuente para el mensaje de error */
+  color: red;
+  font-size: 12px;
 }

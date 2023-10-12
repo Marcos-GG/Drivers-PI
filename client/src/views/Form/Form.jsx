@@ -7,7 +7,6 @@ import { postDriver } from "../../redux/actions";
 const Form = () => {
   const dispatch = useDispatch();
   const Teams = useSelector((state) => state.teams);
-  const Drivers = useSelector((state) => state.users);
 
   const [form, setForm] = useState({
     name: "",
@@ -67,14 +66,12 @@ const Form = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (Object.keys(error).length === 0 && camposLLenos()) {
-      const driverExiste = Drivers.find((driver) => driver.name === form.name);
 
-      driverExiste
-        ? alert("Ya existe driver con ese nombre")
-        : alert("Driver creado!");
-
+    try {
       dispatch(postDriver(form));
+      if (!error) alert("driver creado!");
+    } catch (error) {
+      alert(error.message);
     }
   };
 

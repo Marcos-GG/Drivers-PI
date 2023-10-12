@@ -1,3 +1,24 @@
 .landingPage {
   background-image: url("../../../public/lading.jpg");
+  background-size: cover;
+  background-position: center center;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttonContainer {
+  font-size: 20px;
+  padding: 15px 30px;
+  background-color: #db3434;
+  border: none;
+  color: rgb(212, 33, 33);
+  border-radius: 12px;
+  cursor: pointer;
+  color: inherit;
+}
+
+.buttonContainer button:hover {
+  background-color: #e74c3c;
 }

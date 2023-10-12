@@ -3,7 +3,7 @@ const validation = (form) => {
 
   if (!form.name) {
     error.name = "El campo está vacío";
-  } else if (!/^[A-Za-z]+(?: [A-Za-z]+)+$/.test(form.name)) {
+  } else if (!/^[A-Za-záéíóúÁÉÍÓÚñÑ\s]+$/.test(form.name)) {
     error.name = "Solo se admiten letras";
   }
 

@@ -29,7 +29,7 @@ export const getAllUsers = () => {
       }));
       dispatch({ type: ALL_DRIVER, payload: newArray });
     } catch (err) {
-      console.log(err);
+      alert("no se cargaron los teams");
     }
   };
 };
@@ -70,8 +70,19 @@ export const getById = (id) => {
 
 export const postDriver = (form) => {
   return async function (dispatch) {
-    const Driver = await axios.post("http://localhost:3001/drivers", form);
-    dispatch({ type: POST_DRIVER, payload: Driver.data });
+    try {
+      const existeDrivers = await axios.get("http://localhost:3001/drivers");
+      const siDriverExiste = existeDrivers.data.some(
+        (driver) => driver.name === form.name
+      );
+      if (siDriverExiste) throw new Error("ya existe un driver con ese nombre");
+
+      const newDriver = await axios.post("http://localhost:3001/drivers", form);
+
+      dispatch({ type: POST_DRIVER, payload: newDriver.data });
+    } catch (error) {
+      alert(error);
+    }
   };
 };
 

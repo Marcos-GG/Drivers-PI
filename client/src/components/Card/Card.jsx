@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-// este componente por cada driver que recibe crea una card
+
 import style from "./Card.module.css";
 import { NavLink } from "react-router-dom";
 

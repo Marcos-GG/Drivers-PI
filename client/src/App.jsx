@@ -21,5 +21,3 @@ const App = () => {
 };
 
 export default App;
-
-/* excat para que no se me muestre el contenido de un componente x en otro */

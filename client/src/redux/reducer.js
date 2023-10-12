@@ -72,13 +72,10 @@ const reducer = (state = initialState, action) => {
     }
 
     case GET_BY_ID: {
-      console.log(action.payload, "esto llega al reducer");
-
       return { ...state, userId: action.payload };
     }
 
     case POST_DRIVER: {
-      console.log(action.payload, "esto llega al reducer");
       return {
         ...state,
         users: [action.payload, ...state.users],

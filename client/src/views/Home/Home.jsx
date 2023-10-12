@@ -8,7 +8,6 @@ import style from "./home.module.css";
 
 const Home = () => {
   const dispatch = useDispatch();
-  // home es quien muestra CardContianer , por eso necesitamos hacer el dispatch que getAllUsers cuando mostamos el componente home
 
   useEffect(() => {
     dispatch(getTeams());
@@ -25,11 +24,11 @@ const Home = () => {
 
   const Drivers = FiltersDriver.length > 0 ? FiltersDriver : AllDrivers;
 
-  const [nDrivers, setNDrivers] = useState(9); // hasta donde quiero mostrar
+  const [nDrivers, setNDrivers] = useState(9);
   const [pagina, setPagina] = useState(1);
 
-  const driverFinal = pagina * nDrivers; // 1 * 9
-  const driverInicial = driverFinal - nDrivers; // 9 - 9
+  const driverFinal = pagina * nDrivers;
+  const driverInicial = driverFinal - nDrivers;
 
   // en que pagina estoy
   const numeroDeDrivers = Drivers.slice(driverInicial, driverFinal);
