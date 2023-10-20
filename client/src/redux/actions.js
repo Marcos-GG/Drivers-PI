@@ -49,6 +49,7 @@ export const getByName = (name) => {
       if (!drivers.length) throw new Error(drivers.error);
 
       let newArray = drivers.map((driver) => ({
+        id: driver.id,
         image: driver.image,
         name: driver.name,
         lastName: driver.lastName,

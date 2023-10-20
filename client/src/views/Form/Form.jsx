@@ -51,6 +51,10 @@ const Form = () => {
   };
 
   const addTeam = (event) => {
+    if (form.teams.includes(event.target.value)) {
+      return;
+    }
+
     setForm({
       ...form,
       teams: [...form.teams, event.target.value],

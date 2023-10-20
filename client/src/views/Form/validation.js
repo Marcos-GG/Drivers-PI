@@ -19,13 +19,15 @@ const validation = (form) => {
     error.nationality = "Solo se admiten letras";
   }
 
-  if (/^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|png|gif)$/.test(form.image))
+  if (!/^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|jpeg|png|gif)$/.test(form.image)) {
     error.image = "url o imagen no valido";
+  }
 
   if (!form.birth) error.birth = "El campo está vacío";
 
-  if (!form.description) error.description = "El campo está vacio";
-  else if (form.description.length > 100)
+  if (form.description.length < 20)
+    error.description = " la descripcion tiene pocos caracteres";
+  else if (form.description.length > 150)
     error.description = "Demasiado caracteres";
 
   return error;
