@@ -1,5 +1,5 @@
 .landingPage {
-  background-image: url("../../../public/lading.jpg");
+  background-image: url("/lading.jpg");
   background-size: cover;
   background-position: center center;
   height: 100vh;
